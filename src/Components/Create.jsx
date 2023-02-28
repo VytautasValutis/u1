@@ -14,6 +14,10 @@ function Create({ setAccount }) {
     }
 
     const createAcc = () => {
+        if(name === '' && surname === '') {
+            setAccount(null);
+            return;
+        }
         setAccount({
             name,
             surname,
