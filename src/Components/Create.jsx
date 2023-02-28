@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Create({ setAccList }) {
+function Create({ setAccount }) {
 
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -14,7 +14,7 @@ function Create({ setAccList }) {
     }
 
     const createAcc = () => {
-        setAccList({
+        setAccount({
             name,
             surname,
             value: 0,

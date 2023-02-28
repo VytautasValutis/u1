@@ -27,4 +27,3 @@ export const destroy = (key, id) => {
     write(key, deleteData);
 }
 
-export default create;

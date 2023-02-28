@@ -3,26 +3,23 @@ import { useEffect, useState } from 'react';
 import './App.scss';
 import Create from './Components/Create';
 import List from './Components/List';
-import create, { read, destroy } from './Functions/localStorage';
+import { create, read, destroy } from './Functions/localStorage';
 
 const KEY = 'BANK-REACT';
 
 function App() {
 
-  const [accList, setAccList] = useState(null); 
+  const [account, setAccount] = useState(null);
+  const [accList, setAccList] = useState(null);
   const [lastRefresh, setLastRefresh] = useState(Date.now());
 
-  useEffect (() => {
-    setAccList(read(KEY));
-  }, [lastRefresh]);
-
   useEffect(() => {
-    if (null === accList) {
+    if (account === null) {
       return;
     }
-    console.log('+++ App');
-    create(KEY, accList);
-  }, [accList]);
+    create(KEY, account);
+  }, [account]);
+
 
   return (
     <div className="App">
@@ -30,7 +27,7 @@ function App() {
         <div className="container">
           <div className="row">
             <div className="col-4">
-              <Create setAccList={setAccList} />
+              <Create setAccount={setAccount} />
             </div>
             <div className="col-8">
               <List accList={accList} />
