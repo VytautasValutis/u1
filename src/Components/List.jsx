@@ -1,4 +1,15 @@
-function List(accList) {
+function List({ accList }) {
+
+    if (accList === null) {
+        return (
+            <div className="card mt-5">
+                <div className="card-header">
+                    <h2>LOADING ...</h2>
+                </div>
+            </div>
+        )
+    }
+
 
     return (
         <div className="card mt-5">
@@ -9,9 +20,9 @@ function List(accList) {
                 <ul className="list-group">
                     {
                         accList.length ?
-                            accList.map(w => <li className="list-group-item">{w.surName}" "{w.name}
-                            {/* <div className="ed-button"></div> */}
-                            {/* <div className="del-button" onClick={destroy(w)}></div> */}
+                            accList.map((w, i) => <li key={i} className="list-group-item">{w.surname + ' '+ w.name}
+                                {/* <div className="ed-button"></div> */}
+                                {/* <div className="del-button" onClick={destroy(w)}></div> */}
                             </li>)
                             :
                             <li className="list-group-item">No wishes yet</li>

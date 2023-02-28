@@ -14,6 +14,10 @@ function App() {
   const [lastRefresh, setLastRefresh] = useState(Date.now());
 
   useEffect(() => {
+    setAccList(read(KEY));
+  }, []);
+
+  useEffect(() => {
     if (account === null) {
       return;
     }
