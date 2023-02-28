@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.card {
+  .card-header {
+    background-color: gray;
+    h2 {
+      color: #000;
+    }
+  }
+}
