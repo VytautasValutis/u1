@@ -20,6 +20,7 @@ function App() {
     if (null === accList) {
       return;
     }
+    console.log('+++ App');
     create(KEY, accList);
   }, [accList]);
 

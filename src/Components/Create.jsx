@@ -41,7 +41,6 @@ function Create({ setAccList }) {
                 <button type="button" className="btn btn-outline-primary m-4" onClick={createAcc}>add account</button>
             </div>
         </div >
-
     )
 }
 

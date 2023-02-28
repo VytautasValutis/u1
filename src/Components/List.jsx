@@ -1,4 +1,6 @@
 function List(accList) {
+
+    console.log('***',accList);
     return (
         <div className="card mt-5">
             <div className="card-header">
