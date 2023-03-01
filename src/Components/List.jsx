@@ -1,4 +1,35 @@
-function List({ accList, setDelAccount }) {
+import { useState } from "react";
+
+function List({ accList, setDelAccount, setEditValue }) {
+
+    const [money, setMoney] = useState(0);
+
+    const doSetMoney = e => {
+        setMoney(e.target.value);
+    }
+
+    const doAddValue = w => {
+        setEditValue({
+            name: w.name,
+            surname: w.surname,
+            value: +w.value + +money,
+            id: w.id,
+        });
+        setMoney(0);
+    }
+
+    const doRemValue = w => {
+        // if(money > w.value) {
+        //     setMoney(w.value);
+        // };
+        setEditValue({
+            name: w.name,
+            surname: w.surname,
+            value: +w.value - +money,
+            id: w.id,
+        });
+        setMoney(0);
+    }
 
     const destroyAcc = w => {
         setDelAccount(w);
@@ -29,9 +60,9 @@ function List({ accList, setDelAccount }) {
                                     <small> Values: {w.value}</small>
                                 </div>
                                 <div className="list-group list-group-horizontal">
-                                    <input type="text" className="form-control h-50 mt-5" />
-                                    <button type="button" className="btn btn-outline-success m-4">add value</button>
-                                    <button type="button" className="btn btn-outline-warning m-4">remove value</button>
+                                    <input type="number" className="form-control h-50 mt-5" onChange={doSetMoney} value={money} />
+                                    <button type="button" className="btn btn-outline-success m-4" onClick={() => doAddValue(w)}>add value</button>
+                                    <button type="button" className="btn btn-outline-warning m-4" onClick={() => doRemValue(w)}>remove value</button>
                                     <button type="button" className="btn btn-outline-danger m-4" onClick={() => destroyAcc(w)}>remove account</button>
                                 </div>
                             </div>
