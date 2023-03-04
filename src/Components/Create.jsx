@@ -22,7 +22,6 @@ function Create({ setAccount }) {
             name,
             surname,
             value: 0,
-            money: 0,
         })
         setName('');
         setSurname('');
