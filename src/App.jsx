@@ -46,15 +46,6 @@ function App() {
     setLastRefresh(Date.now());
   }, [editValue])
 
-  // useEffect(() => {
-  //   console.log(alertDel);
-  //   if (alertDel === null) {
-  //     return;
-  //   }
-  //     DoAlertDel();
-  // }, [alertDel]);
-
-
   return (
     <div className="App">
       <header className="App-header">
