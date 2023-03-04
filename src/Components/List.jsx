@@ -1,13 +1,12 @@
 import { useState } from "react";
 
-function List({ accList, setDelAccount, setEditValue }) {
+function List({ accList, setDelAccount, setEditValue, setAlertDel }) {
 
     const [money, setMoney] = useState({});
 
     const doSetMoney = e => {
         const { name } = e.target;
         const mmm = e.target.value;
-        // setMoney(e.target.value);
         setMoney({
             ...money, [name]: mmm,
         })
@@ -38,6 +37,7 @@ function List({ accList, setDelAccount, setEditValue }) {
     }
 
     const destroyAcc = w => {
+        setAlertDel(w);
         setDelAccount(w);
     }
 
