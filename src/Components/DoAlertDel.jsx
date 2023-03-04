@@ -1,10 +1,8 @@
 import { useState } from "react";
 
-function DoAlertDel({ alertDel, setAlertDel}) {
+function DoAlertDel({ alertDel, setAlertDel }) {
 
-    console.log('****',alertDel);
-
-    if(alertDel === null) {
+    if (alertDel === null) {
         return null;
     };
 
@@ -17,9 +15,12 @@ function DoAlertDel({ alertDel, setAlertDel}) {
                             <h2 className="modal-title">Error</h2>
                             <button type="button" className="btn-close" onClick={() => setAlertDel(null)}></button>
                         </div>
-                        <div class="modal-body">
-                            {/* <p>Account : {alertDel.name} {alertDel.surname}</p> */}
-                            <p>Value is not equal zero.</p>
+                        <div className="modal-body">
+                            <p>Account : {alertDel.name} {alertDel.surname}</p>
+                            {+alertDel.err > 1 ?
+                                <p>Value is too low</p> :
+                                <p>Value is not equal zero.</p> 
+                            }
                         </div>
                     </div>
                 </div>

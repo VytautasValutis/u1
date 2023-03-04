@@ -26,7 +26,13 @@ function List({ accList, setDelAccount, setEditValue, setAlertDel }) {
 
     const doRemValue = (w, i) => {
         if (w.value < +money[i]) {
-            setAlertDel(w);
+            setAlertDel({
+                name: w.name,
+                surname: w.surname,
+                value: +w.value,
+                id: w.id,
+                err: 2,
+            });
             return;
         }
         setEditValue({
@@ -42,7 +48,13 @@ function List({ accList, setDelAccount, setEditValue, setAlertDel }) {
 
     const destroyAcc = w => {
         if (w.value > 0) {
-            setAlertDel(w);
+            setAlertDel({
+                name: w.name,
+                surname: w.surname,
+                value: +w.value,
+                id: w.id,
+                err: 1,
+            });
             return;
         }
         setDelAccount(w);

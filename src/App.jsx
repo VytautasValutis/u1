@@ -16,7 +16,7 @@ function App() {
   const [delAccount, setDelAccount] = useState(null);
   const [editValue, setEditValue] = useState(0);
   const [alertDel, setAlertDel] = useState(null);
-  
+
 
   useEffect(() => {
     setAccList(read(KEY));
@@ -46,13 +46,13 @@ function App() {
     setLastRefresh(Date.now());
   }, [editValue])
 
-  useEffect(() => {
-    console.log(alertDel);
-    if (alertDel === null) {
-      return;
-    }
-      DoAlertDel(alertDel);
-  }, [alertDel]);
+  // useEffect(() => {
+  //   console.log(alertDel);
+  //   if (alertDel === null) {
+  //     return;
+  //   }
+  //     DoAlertDel();
+  // }, [alertDel]);
 
 
   return (
@@ -72,7 +72,7 @@ function App() {
             </div>
           </div>
         </div>
-        <DoAlertDel alertDel={alertDel} setAlertDel={setAlertDel}/>
+        <DoAlertDel alertDel={alertDel} setAlertDel={setAlertDel} />
       </header>
     </div>
   );
