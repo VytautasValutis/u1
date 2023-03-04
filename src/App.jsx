@@ -16,6 +16,7 @@ function App() {
   const [delAccount, setDelAccount] = useState(null);
   const [editValue, setEditValue] = useState(0);
   const [alertDel, setAlertDel] = useState(null);
+  
 
   useEffect(() => {
     setAccList(read(KEY));
