@@ -46,11 +46,11 @@ function App() {
   }, [editValue])
 
   useEffect(() => {
-    console.log(alertDel);
+    console.log('App ', alertDel);
     if (alertDel === null) {
       return;
     }
-      DoAlertDel(alertDel);
+      DoAlertDel(alertDel, setAlertDel);
   }, [alertDel]);
 
 
@@ -71,7 +71,7 @@ function App() {
             </div>
           </div>
         </div>
-        <DoAlertDel alertDel={alertDel} setAlertDel={setAlertDel}/>
+        <DoAlertDel alertDel={alertDel} />
       </header>
     </div>
   );
