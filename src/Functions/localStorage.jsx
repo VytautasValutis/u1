@@ -18,7 +18,7 @@ export const create = (key, data) => {
     const allData = read(key);
     data.id = uuidv4();
     allData.push(data);
-    write(key, allData);
+    write(key, allData.sort((a, b) => a.surname.localeCompare(b.surname)));
 }
 
 export const destroy = (key, id) => {
