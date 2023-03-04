@@ -66,7 +66,7 @@ function List({ accList, setDelAccount, setEditValue }) {
                                     <small> Values: {w.value}</small>
                                 </div>
                                 <div className="list-group list-group-horizontal">
-                                    <input type="number" className="form-control h-50 mt-5" onChange={doSetMoney} name={i} value={money[i]} />
+                                    <input type="number" className="form-control h-50 mt-5" onChange={doSetMoney} name={i} value={money[i] ? money[i] : 0} />
                                     <button type="button" className="btn btn-outline-success m-4" onClick={() => doAddValue(w, i)}>add value</button>
                                     <button type="button" className="btn btn-outline-warning m-4" onClick={() => doRemValue(w, i)}>remove value</button>
                                     <button type="button" className="btn btn-outline-danger m-4" onClick={() => destroyAcc(w)}>remove account</button>
