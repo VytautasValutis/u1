@@ -25,15 +25,6 @@ function List({ accList, setDelAccount, setEditValue, setAlertDel }) {
     }
 
     const doRemValue = (w, i) => {
-        if (+w.value < +money[i]) {
-            setAlertDel({
-                name: w.name,
-                surname: w.surname,
-                value: w.value,
-                err: 2,
-            });
-            return;
-        }
         setEditValue({
             name: w.name,
             surname: w.surname,
@@ -46,16 +37,7 @@ function List({ accList, setDelAccount, setEditValue, setAlertDel }) {
     }
 
     const destroyAcc = w => {
-        console.log('List ',w);
-        if (w.value > 0) {
-            setAlertDel({
-                name: w.name,
-                surname: w.surname,
-                value: w.value,
-                err: 1,
-            });
-            return;
-        }
+        setAlertDel(w);
         setDelAccount(w);
     }
 
