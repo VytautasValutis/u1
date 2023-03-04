@@ -1,13 +1,12 @@
 import { useState } from "react";
 
-function List({ accList, setDelAccount, setEditValue }) {
+function List({ accList, setDelAccount, setEditValue, setAlertDel }) {
 
     const [money, setMoney] = useState({});
 
     const doSetMoney = e => {
         const { name } = e.target;
         const mmm = e.target.value;
-        // setMoney(e.target.value);
         setMoney({
             ...money, [name]: mmm,
         })
@@ -26,6 +25,16 @@ function List({ accList, setDelAccount, setEditValue }) {
     }
 
     const doRemValue = (w, i) => {
+        if (w.value < +money[i]) {
+            setAlertDel({
+                name: w.name,
+                surname: w.surname,
+                value: +w.value,
+                id: w.id,
+                err: 2,
+            });
+            return;
+        }
         setEditValue({
             name: w.name,
             surname: w.surname,
@@ -38,6 +47,16 @@ function List({ accList, setDelAccount, setEditValue }) {
     }
 
     const destroyAcc = w => {
+        if (w.value > 0) {
+            setAlertDel({
+                name: w.name,
+                surname: w.surname,
+                value: +w.value,
+                id: w.id,
+                err: 1,
+            });
+            return;
+        }
         setDelAccount(w);
     }
 
@@ -66,7 +85,7 @@ function List({ accList, setDelAccount, setEditValue }) {
                                     <small> Values: {w.value}</small>
                                 </div>
                                 <div className="list-group list-group-horizontal">
-                                    <input type="number" className="form-control h-50 mt-5" onChange={doSetMoney} name={i} value={money[i]} />
+                                    <input type="number" className="form-control h-50 mt-5" onChange={doSetMoney} name={i} value={money[i] ? money[i] : 0} />
                                     <button type="button" className="btn btn-outline-success m-4" onClick={() => doAddValue(w, i)}>add value</button>
                                     <button type="button" className="btn btn-outline-warning m-4" onClick={() => doRemValue(w, i)}>remove value</button>
                                     <button type="button" className="btn btn-outline-danger m-4" onClick={() => destroyAcc(w)}>remove account</button>
