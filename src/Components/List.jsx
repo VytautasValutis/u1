@@ -2,33 +2,39 @@ import { useState } from "react";
 
 function List({ accList, setDelAccount, setEditValue }) {
 
-    const [money, setMoney] = useState(0);
+    const [money, setMoney] = useState({});
 
     const doSetMoney = e => {
-        setMoney(e.target.value);
+        const { name } = e.target;
+        const mmm = e.target.value;
+        // setMoney(e.target.value);
+        setMoney({
+            ...money, [name]: mmm,
+        })
     }
 
-    const doAddValue = w => {
+    const doAddValue = (w, i) => {
         setEditValue({
             name: w.name,
             surname: w.surname,
-            value: +w.value + +money,
+            value: +w.value + +money[i],
             id: w.id,
         });
-        setMoney(0);
+        setMoney({
+            ...money, [i]: 0,
+        })
     }
 
-    const doRemValue = w => {
-        // if(money > w.value) {
-        //     setMoney(w.value);
-        // };
+    const doRemValue = (w, i) => {
         setEditValue({
             name: w.name,
             surname: w.surname,
-            value: +w.value - +money,
+            value: +w.value - +money[i],
             id: w.id,
         });
-        setMoney(0);
+        setMoney({
+            ...money, [i]: 0,
+        })
     }
 
     const destroyAcc = w => {
@@ -60,9 +66,9 @@ function List({ accList, setDelAccount, setEditValue }) {
                                     <small> Values: {w.value}</small>
                                 </div>
                                 <div className="list-group list-group-horizontal">
-                                    <input type="number" className="form-control h-50 mt-5" onChange={doSetMoney} value={money} />
-                                    <button type="button" className="btn btn-outline-success m-4" onClick={() => doAddValue(w)}>add value</button>
-                                    <button type="button" className="btn btn-outline-warning m-4" onClick={() => doRemValue(w)}>remove value</button>
+                                    <input type="number" className="form-control h-50 mt-5" onChange={doSetMoney} name={i} value={money[i]} />
+                                    <button type="button" className="btn btn-outline-success m-4" onClick={() => doAddValue(w, i)}>add value</button>
+                                    <button type="button" className="btn btn-outline-warning m-4" onClick={() => doRemValue(w, i)}>remove value</button>
                                     <button type="button" className="btn btn-outline-danger m-4" onClick={() => destroyAcc(w)}>remove account</button>
                                 </div>
                             </div>
